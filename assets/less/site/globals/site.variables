@@ -1,0 +1,10 @@
+@brandColor: #333;
+@searchButtonColor: #bd0a27;
+@darkGray: #bd0a27;
+@green: #bd0a27;
+@linkColor:#bd0a27;
+@primaryColor: #bd0a27;
+@navbarBackgroundImage: linear-gradient(12deg,#333,#333 85%,rgba(221,221,221,.69));
+@navbarBackgroundColor: @brandColor;
+@footerLightColor: @brandColor;
+@footerDarkColor: #111;

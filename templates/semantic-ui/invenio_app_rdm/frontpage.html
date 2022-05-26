@@ -1,0 +1,36 @@
+{#
+  Copyright (C) 2019-2020 CERN.
+  Copyright (C) 2019-2020 Northwestern University.
+  Copyright (C) 2021 New York University.
+
+  Invenio App RDM is free software; you can redistribute it and/or modify it
+  under the terms of the MIT License; see LICENSE file for more details.
+#}
+{%- extends "invenio_theme/frontpage.html" %}
+
+{%- block page_header %}
+{%- include "invenio_app_rdm/header_frontpage.html" %}
+{%- endblock page_header %}
+
+{%- block page_body %}
+{%- block first_section %}
+<div class="ui divider hidden"></div>
+<div class="ui stackable grid">
+
+  <div class="ui centered two column grid">
+    <div class="stretched row">
+      <div class="eight wide column">
+        <h2>
+          Recent uploads
+        </h2>
+      </div>
+      <div class="four wide column">
+        <a class="twitter-timeline" href="https://twitter.com/INGVvulcani" data-widget-id="331751059422855169"></a>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+    </div>
+  </div>
+</div>
+
+{%- endblock first_section %}
+{%- endblock page_body %}
