@@ -16,10 +16,10 @@
 <div class="ui divider hidden"></div>
 <div class="ui stackable grid">
 
-  <div class="ui centered two column grid">
+  <div class="ui stackable centered two column grid">
     <div class="stretched row">
       <div class="eight wide column">
-        <h2>
+        <h2 class="ui center aligned header">
           Recent uploads
         </h2>
         {% if not records %}
@@ -31,67 +31,36 @@
         {%- for r in records %}
         {%- set creation_date = r.created|from_isodatetime -%}
         {%- set record_url = url_for('invenio_app_rdm_records.record_detail', pid_value=r.id) %}
-
-        <article>
-          <!--TODO:
-        something with doi
-        -->
-          <div class="badges">
-            <!--Publication date/Version badge-->
-            <span class="ui label blue" data-tooltip="{{_('Publication date')}}" data-inverted="">
-              {{ r.metadata.publication_date }} {{ '(' ~ r.metadata.version ~ ')' if r.metadata.version }}
-            </span>
-
-            <!--Resource type badge-->
-            <span class="ui label grey" data-tooltip="{{_('Resource type')}}" data-inverted>
-              {{ r.ui.resource_type.title_l10n }}
-            </span>
-
-            <span class="ui label access-status {{ r.ui.access_status.id }}" data-tooltip="{{ r.ui.access_status.description_l10n }}" data-inverted="">
-              {% if r.ui.access_status.icon %}<i class="icon {{ r.ui.access_status.icon }}"></i>{% endif %}
-              {{ r.ui.access_status.title_l10n }}
-            </span>
-
-            <span class="label record-version">
-              <!--TODO: add subtype--->
-            </span>
-          </div>
-
-          <h4>
-            <a href="{{ record_url }}" class="no-decoration">
-              {{r.metadata.title}}
+        <div class="ui divided items">
+          <div class="item">
+            <a href="{{ record_url }}" class="image">
+              {% if r.metadata.cover %}
+              <img src="{{ r.metadata.cover }}" alt="Record cover">
+              {% endif %}
             </a>
-          </h4>
-
-          <div class="item creatibutors">
-            {{ creators(r.metadata.creators) }}
-          </div>
-
-          <p class="hidden-xs">
-            <!-- <a href="{{record_url}}" class="no-decoration"> -->
-              {{ r.metadata.description | striptags | truncate(300) }}
-            <!-- </a> -->
-          </p>
-
-          <div class="ui grid">
-            <div class="two column row">
-              <div class="left floated column">
-                {%- for s in r.metadata.subjects %}
-                <div class="ui tiny label">{{s.subject}}</div>
-                {%- endfor %}
-                <div>
-                  <small>
-                    {% trans user=userprofile, date=creation_date | dateformat('long')%}
-                    Uploaded on {{date}}
-                    {% endtrans %}
-                  </small>
+            <div class="content"><a href="{{ record_url }}" class="header no-decoration">{{ r.metadata.title }}</a>
+              <div class="meta"><span class="cinema">{{ creators(r.metadata.creators) }}</span></div>
+              <div class="description">
+                <div class="ui justified container">
+                  <p>{{ r.metadata.description | striptags | truncate(300) }}</p>
                 </div>
               </div>
-
+              <div class="extra">
+                <div class="ui tiny label blue" data-tooltip="{{_('Publication date')}}">
+                  {{ r.metadata.publication_date }} {{ '(' ~ r.metadata.version ~ ')' if r.metadata.version }}
+                </div>
+                <div class="ui tiny label grey" data-tooltip="{{_('Resource type')}}">
+                  {{ r.ui.resource_type.title_l10n }}
+                </div>
+                <div class="ui tiny label access-status {{ r.ui.access_status.id }}" data-tooltip="{{ r.ui.access_status.description_l10n }}">
+                  {% if r.ui.access_status.icon %}<i class="icon {{ r.ui.access_status.icon }}"></i>{% endif %}
+                  {{ r.ui.access_status.title_l10n }}
+                </div>
+              </div>
             </div>
           </div>
-        </article>
-
+        </div>
+        <div class="ui divider"></div>
         {%- endfor %}
         {% if records %}
         <div class="ui centered grid">
