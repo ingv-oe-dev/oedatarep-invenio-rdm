@@ -14,11 +14,10 @@
 {%- from "invenio_app_rdm/macros/authors.html" import creators -%}
 {%- block page_body %}
 <div class="ui divider hidden"></div>
-<div class="ui stackable grid">
-
-  <div class="ui stackable centered two column grid">
-    <div class="stretched row">
-      <div class="eight wide column">
+<div class="ui container">
+  <div class="ui stackable grid">
+    <div class="two column row">
+      <div class="twelve wide column">
         <h2 class="ui center aligned header">
           Recent uploads
         </h2>
@@ -33,28 +32,33 @@
         {%- set record_url = url_for('invenio_app_rdm_records.record_detail', pid_value=r.id) %}
         <div class="ui divided items">
           <div class="item">
-            <a href="{{ record_url }}" class="image">
-              {% if r.metadata.cover %}
-              <img src="{{ r.metadata.cover }}" alt="Record cover">
-              {% endif %}
-            </a>
-            <div class="content"><a href="{{ record_url }}" class="header no-decoration">{{ r.metadata.title }}</a>
-              <div class="meta"><span class="cinema">{{ creators(r.metadata.creators) }}</span></div>
-              <div class="description">
-                <div class="ui justified container">
-                  <p>{{ r.metadata.description | striptags | truncate(300) }}</p>
-                </div>
-              </div>
-              <div class="extra">
-                <div class="ui tiny label blue" data-tooltip="{{_('Publication date')}}">
-                  {{ r.metadata.publication_date }} {{ '(' ~ r.metadata.version ~ ')' if r.metadata.version }}
-                </div>
-                <div class="ui tiny label grey" data-tooltip="{{_('Resource type')}}">
-                  {{ r.ui.resource_type.title_l10n }}
-                </div>
-                <div class="ui tiny label access-status {{ r.ui.access_status.id }}" data-tooltip="{{ r.ui.access_status.description_l10n }}">
-                  {% if r.ui.access_status.icon %}<i class="icon {{ r.ui.access_status.icon }}"></i>{% endif %}
-                  {{ r.ui.access_status.title_l10n }}
+            <div class="content">
+              <div class="ui grid">
+                <div class="two column row">
+                  <div class="twelve wide computer sixteen wide mobile sixteen wide tablet column">
+                    <div class="extra labels-actions">
+                      <div class="ui tiny label blue" data-tooltip="{{_('Publication date')}}">
+                        {{ r.metadata.publication_date }} {{ '(' ~ r.metadata.version ~ ')' if r.metadata.version }}
+                      </div>
+                      <div class="ui tiny label grey" data-tooltip="{{_('Resource type')}}">
+                        {{ r.ui.resource_type.title_l10n }}
+                      </div>
+                      <div class="ui tiny label access-status {{ r.ui.access_status.id }}" data-tooltip="{{ r.ui.access_status.description_l10n }}">
+                        {% if r.ui.access_status.icon %}<i class="icon {{ r.ui.access_status.icon }}"></i>{% endif %}
+                        {{ r.ui.access_status.title_l10n }}
+                      </div>
+                    </div>
+                    <h3>
+                      <a href="{{ record_url }}" class="no-decoration">{{ r.metadata.title }}</a>
+                    </h3>
+                    <div class="meta"><span class="cinema">{{ creators(r.metadata.creators) }}</span></div>
+                    <div class="ui justified container description ">
+                        <p>{{ r.metadata.description | striptags | truncate(300) }}</p>
+                    </div>
+                  </div>
+                  <div class="computer only four wide column">
+                      <img src="https://data.ingv.it/dataset/cover/19" class="ui medium bordered rounded image" alt="Record cover">
+                  </div>
                 </div>
               </div>
             </div>
@@ -72,7 +76,8 @@
         <a class="twitter-timeline" data-height="800" href="https://twitter.com/INGVvulcani?ref_src=twsrc%5Etfw">Tweets by INGVvulcani</a>
         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </div>
-    </div>
+  </div>
+
   </div>
 </div>
 
