@@ -5,7 +5,7 @@
   {% endif %}
 {% endfor %}
 
-{%- set id_doi = record.pids.get('doi', alt_identifier[0]).get('identifier') %}
+{%- set id_doi = record.pids.get('doi', alt_identifier[0] if alt_identifier[0] else {}).get('identifier') %}
 {% if id_doi %}
 <dl>
   <dt class="ui tiny header">{{_('DOI')}}</dt>
