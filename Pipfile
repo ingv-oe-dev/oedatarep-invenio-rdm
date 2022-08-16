@@ -11,6 +11,7 @@ invenio-app-rdm = {extras = ["postgresql", "elasticsearch7"], path = "../invenio
 invenio-assets = {path = "../invenio-assets" }
 invenio-rdm-records = {extras = ["elasticsearch7"], path = "../invenio-rdm-records"}
 oedatarep-ts-loader = {path = "../oedatarep-ts-loader"}
+mistune = "==2.0.3"
 
 uwsgi = ">=2.0"
 uwsgitop = ">=0.11"
