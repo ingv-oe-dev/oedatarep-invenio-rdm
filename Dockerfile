@@ -10,6 +10,14 @@
 
 FROM inveniosoftware/centos8-python:3.8
 
+ARG OEDATAREP_RELEASE
+
+# Clone custom repositories
+RUN git clone --depth 1 --branch ${OEDATAREP_RELEASE} https://github.com/ingv-oe-dev/invenio-assets.git ../invenio-assets
+RUN git clone --depth 1 --branch ${OEDATAREP_RELEASE} https://github.com/ingv-oe-dev/invenio-app-rdm.git ../invenio-app-rdm
+RUN git clone --depth 1 --branch ${OEDATAREP_RELEASE} https://github.com/ingv-oe-dev/invenio-rdm-records.git ../invenio-rdm-records
+RUN git clone --depth 1 --branch ${OEDATAREP_RELEASE} https://github.com/ingv-oe-dev/oedatarep-ts-loader.git ../oedatarep-ts-loader
+
 COPY Pipfile Pipfile.lock ./
 RUN pipenv install --deploy --system --pre
 

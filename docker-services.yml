@@ -5,6 +5,7 @@ services:
       context: ./
       args:
         - ENVIRONMENT=DEV
+        - OEDATAREP_RELEASE=v0.1.0rc
     image: oedatarep-ivenio-rdm
     restart: "unless-stopped"
     environment:
