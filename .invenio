@@ -3,13 +3,13 @@ flavour = RDM
 logfile = /logs/invenio-cli.log
 
 [cookiecutter]
-project_name = OEDatarep-Ivenio-RDM
-project_shortname = oedatarep-ivenio-rdm
-project_site = oedatarep-ivenio-rdm.com
+project_name = OEDatarep-Invenio-RDM
+project_shortname = oedatarep-invenio-rdm
+project_site = oedatarep-invenio-rdm.com
 github_repo = ingv-oe-dev/oedatarep-invenio-rdm
-description = OEDatarep-Ivenio-RDM InvenioRDM Instance
+description = OEDatarep-Invenio-RDM InvenioRDM Instance
 author_name = INGV-OE
-author_email = info@oedatarep-ivenio-rdm.com
+author_email = info@oedatarep-invenio-rdm.com
 year = 2022
 python_version = 3.8
 database = postgresql

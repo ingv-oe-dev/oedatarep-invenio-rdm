@@ -1,3 +1,4 @@
+{% if record.metadata.locations %}
 <dl>
     <dt class="ui tiny header">{{_('Locations')}}</dt>
     <dd>
@@ -5,3 +6,4 @@
         <div id="leaflet-locations" data-locations='{{ locations | tojson }}'></div>
     </dd>
 </dl>
+{% endif %}

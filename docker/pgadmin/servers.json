@@ -1,12 +1,12 @@
 {
     "Servers": {
       "1": {
-        "Name": "oedatarep-ivenio-rdm_db",
+        "Name": "oedatarep-invenio-rdm_db",
         "Group": "Servers",
-        "Host": "oedatarep-ivenio-rdm_db_1",
+        "Host": "oedatarep-invenio-rdm_db_1",
         "Port": 5432,
         "MaintenanceDB": "postgres",
-        "Username": "oedatarep-ivenio-rdm",
+        "Username": "oedatarep-invenio-rdm",
         "SSLMode": "prefer"
       }
     }

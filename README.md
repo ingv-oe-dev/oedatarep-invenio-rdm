@@ -1,4 +1,4 @@
-# OEDatarep-Ivenio-RDM
+# OEDatarep-Invenio-RDM
 
 Welcome to your InvenioRDM instance.
 

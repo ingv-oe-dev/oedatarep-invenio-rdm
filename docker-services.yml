@@ -6,7 +6,7 @@ services:
       args:
         - ENVIRONMENT=DEV
         - OEDATAREP_RELEASE=v0.1.0rc
-    image: oedatarep-ivenio-rdm
+    image: oedatarep-invenio-rdm
     restart: "unless-stopped"
     environment:
       - "INVENIO_ACCOUNTS_SESSION_REDIS_URL=redis://cache:6379/1"
@@ -17,12 +17,12 @@ services:
       - "INVENIO_CELERY_RESULT_BACKEND=redis://cache:6379/2"
       - "INVENIO_SEARCH_ELASTIC_HOSTS=['es:9200']"
       - "INVENIO_SECRET_KEY=CHANGE_ME"
-      - "INVENIO_SQLALCHEMY_DATABASE_URI=postgresql+psycopg2://oedatarep-ivenio-rdm:oedatarep-ivenio-rdm@db/oedatarep-ivenio-rdm"
+      - "INVENIO_SQLALCHEMY_DATABASE_URI=postgresql+psycopg2://oedatarep-invenio-rdm:oedatarep-invenio-rdm@db/oedatarep-invenio-rdm"
       - "INVENIO_WSGI_PROXIES=2"
       - "INVENIO_RATELIMIT_STORAGE_URL=redis://cache:6379/3"
   frontend:
     build: ./docker/nginx/
-    image: oedatarep-ivenio-rdm-frontend
+    image: oedatarep-invenio-rdm-frontend
     restart: "unless-stopped"
     ports:
       - "80"
@@ -37,9 +37,9 @@ services:
     image: postgres:12.4
     restart: "unless-stopped"
     environment:
-      - "POSTGRES_USER=oedatarep-ivenio-rdm"
-      - "POSTGRES_PASSWORD=oedatarep-ivenio-rdm"
-      - "POSTGRES_DB=oedatarep-ivenio-rdm"
+      - "POSTGRES_USER=oedatarep-invenio-rdm"
+      - "POSTGRES_PASSWORD=oedatarep-invenio-rdm"
+      - "POSTGRES_DB=oedatarep-invenio-rdm"
     ports:
       - "5432:5432"
   pgadmin:
@@ -49,8 +49,8 @@ services:
       - "5050:80"
       - "5051:443"
     environment:
-      PGADMIN_DEFAULT_EMAIL: "info@oedatarep-ivenio-rdm.com"
-      PGADMIN_DEFAULT_PASSWORD: "oedatarep-ivenio-rdm"
+      PGADMIN_DEFAULT_EMAIL: "info@oedatarep-invenio-rdm.com"
+      PGADMIN_DEFAULT_PASSWORD: "oedatarep-invenio-rdm"
     volumes:
       - ./docker/pgadmin/servers.json:/pgadmin4/servers.json
   mq:
