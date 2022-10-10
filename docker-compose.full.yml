@@ -28,6 +28,8 @@ services:
     extends:
       file: docker-services.yml
       service: db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
   mq:
     extends:
       file: docker-services.yml
@@ -106,3 +108,4 @@ volumes:
   static_data:
   uploaded_data:
   archived_data:
+  postgres_data:
