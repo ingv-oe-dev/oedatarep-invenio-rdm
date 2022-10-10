@@ -7,3 +7,4 @@
 @navbarBackgroundColor: @brandColor;
 @footerLightColor: @brandColor;
 @footerDarkColor: #111;
+@75px: fit-content;
