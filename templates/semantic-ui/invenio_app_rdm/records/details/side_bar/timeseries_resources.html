@@ -1,0 +1,29 @@
+{%- if record.metadata.ts_resources -%}
+    {% set chartresource = record.metadata.ts_resources %}
+    {%- if chartresource|length > 0 -%}
+        {% set published = [] %}
+        {% for ts in chartresource %}
+            {%- if ts.ts_published -%}
+                {% set published = published.append(ts) %}
+            {%- endif -%}
+        {%- endfor -%}
+    {%- endif -%}
+    {%- if config.get("TSD_API_URL") -%}
+        {% set tsdws = config.get("TSD_API_URL") %}
+            {%- if published|length > 0 -%}
+                <section id="ts-res-record" aria-label="{{ _('Timeseries resources') }}" class="ui segment rdm-sidebar ts_resources">
+                    <h2 class="ui small header">{{ _('Timeseries resources')}}</h2>
+                    <div role="list" class="ui list">
+                        {% for ts in published %}
+                            <div role="listitem"><b>{{ ts.name }}</b>
+                                <div role="list" class="ui list">
+                                    <div role="listitem" class=""><a href="{{ tsdws }}/swagger-ui/dist?timeseries_id={{ ts.guid }}&origin=oedatarep" target="_blank">Query builder</a></div>
+                                    <div role="listitem" class=""><a href="{{ ts.tsdws_url }}" target="_blank">Preview data</a></div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </section>
+            {%- endif -%}
+    {%- endif -%}
+{%- endif -%}
