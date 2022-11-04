@@ -3,9 +3,6 @@ name = "pypi"
 url = "https://pypi.org/simple"
 verify_ssl = true
 
-[dev-packages]
-check-manifest = ">=0.25"
-
 [packages]
 invenio-assets = {path = "../invenio-assets"}
 invenio-app-rdm = {extras = ["postgresql", "elasticsearch7"], path = "../invenio-app-rdm"}
@@ -15,6 +12,7 @@ oedatarep-ts-loader = {path = "../oedatarep-ts-loader"}
 uwsgi = ">=2.0"
 uwsgitop = ">=0.11"
 uwsgi-tools = ">=1.1.1"
+jsonref = "<1.0.0"
 
 [requires]
 python_version = "3.8"
