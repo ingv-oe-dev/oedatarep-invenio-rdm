@@ -15,43 +15,20 @@
         {%- block footer_top_left %}
           <div class="ui grid">
             <div class="rdm-footer five wide tablet two wide computer column">
-              <h2 class="ui small header">{{_("About InvenioRDM")}}</h2>
-              {% trans invenio_rdm="http://inveniosoftware.org/products/rdm" %}
-              <p><a href="{{invenio_rdm}}">Product page</a></p>
-              {% endtrans %}
-              {% trans invenio_rdm_features="https://inveniosoftware.org/products/rdm/#features" %}
-              <p><a href="{{invenio_rdm_features}}">Features</a></p>
-              {% endtrans %}
-              {% trans invenio_rdm_roadmap="https://inveniosoftware.org/products/rdm/roadmap/" %}
-              <p><a href="{{invenio_rdm_roadmap}}">Roadmap</a></p>
-              {% endtrans %}
-              {% trans invenio_rdm_demo_site="http://inveniordm.web.cern.ch" %}
-              <p><a href="{{invenio_rdm_demo_site}}">Demo site</a></p>
-              {% endtrans %}
+              <h2 class="ui small header">Repository</h2>
+              <p><a href="https://datarep-manual.readthedocs.io" target="_blank">Documentation</a> <i class="icon external alternate"></i></p>
+              <p><a href="/help/search">Search Guide</a> <i class="icon chevron right"></i></p>
+              <p><a href="https://data.ingv.it/en">Data Registry </a><i class="icon external alternate"></i></p>
+              <p><a href="https://data.ingv.it/docs/principles/">Data Policy </a><i class="icon external alternate"></i></p>
             </div>
             <div class="rdm-footer five wide tablet two wide computer column">
-              <h2 class="ui small header">{{_ ("Get involved")}}</h2>
-              {% trans invenio_rdm_gh="https://github.com/inveniosoftware/invenio-app-rdm" %}
-              <p><a href="{{invenio_rdm_gh}}">GitHub</a></p>
-              {% endtrans %}
-              {% trans invenio_rdm_milestones="https://github.com/inveniosoftware/product-rdm" %}
-              <p><a href="{{invenio_rdm_milestones}}">Project Milestones</a></p>
-              {% endtrans %}
-              {% trans invenio_rdm_docs_site="http://inveniordm.docs.cern.ch" %}
-              <p><a href="{{invenio_rdm_docs_site}}">Documentation</a></p>
-              {% endtrans %}
+              <h2 id="related" class="ui small header">Related Services</h2>
+              <p><a href="/tsdws" target="_blank">TSDSystem </a><i class="icon external alternate"></i></p>
+              <p><a href="#related" data-tooltip="Available soon">Geoserver </a><i class="icon settings"></i></p>
             </div>
             <div class="rdm-footer five wide tablet two wide computer column">
-              <h2 class="ui small header">{{_ ("Community")}}</h2>
-              {% trans invenio_rdm_chatroom="https://discord.gg/8qatqBC" %}
-              <p><a href="{{invenio_rdm_chatroom}}">Chatroom</a></p>
-              {% endtrans %}
-              {% trans invenio_rdm_talk="https://invenio-talk.web.cern.ch/c/projects/invenio-rdm" %}
-              <p><a href="{{invenio_rdm_talk}}">Forum</a></p>
-              {% endtrans %}
-              {% trans invenio_events="https://inveniosoftware.org/events/" %}
-              <p><a href="{{invenio_events}}">Events & training</a></p>
-              {% endtrans %}
+              <h2 class="ui small header">Contribute</h2>
+              <p><a href="https://github.com/ingv-oe-dev/oedatarep-invenio-rdm" target="_blank">GitHub </a><i class="icon github"></i></p>
             </div>
 
           {%- endblock footer_top_left %}
