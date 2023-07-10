@@ -34,6 +34,11 @@
           {%- endblock footer_top_left %}
           <div class="six wide column right aligned">
             {%- block footer_top_right %}
+              <a href="https://www.re3data.org/repository/r3d100014141">
+                <img class="ui image rdm-logo"
+                  src="{{ url_for('static', filename=config.RE3DATA_BADGE) }}"
+                  alt="{{ _(config.RE3DATA_BADGE_ALT) }}"/>
+              </a>
             {%- endblock footer_top_right %}
           </div>
         </div>
