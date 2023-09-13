@@ -96,7 +96,7 @@ services:
     volumes:
       - uploaded_data:/opt/invenio/var/instance/data
     depends_on:
-      es:
+      search:
         condition: service_started
       cache:
         condition: service_started
