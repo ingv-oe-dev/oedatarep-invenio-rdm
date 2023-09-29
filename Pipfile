@@ -3,9 +3,13 @@ name = "pypi"
 url = "https://pypi.org/simple"
 verify_ssl = true
 
+[dev-packages]
+check-manifest = ">=0.25"
+
 [packages]
 invenio-assets = {path = "../invenio-assets"}
-invenio-app-rdm = {extras = ["postgresql", "opensearch2"], path = "../invenio-app-rdm"}
+invenio-app-rdm = {extras = ["postgresql", "opensearch2"], version = "~=11.0.0"}
+oedatarep-invenio-rdm = {editable="True", path="./site"}
 invenio-rdm-records = {extras = ["opensearch2"], path = "../invenio-rdm-records"}
 oedatarep-ts-loader = {path = "../oedatarep-ts-loader"}
 
@@ -14,7 +18,7 @@ uwsgitop = ">=0.11"
 uwsgi-tools = ">=1.1.1"
 
 [requires]
-python_version = "3.8"
+python_version = "3.9"
 
 [pipenv]
 allow_prereleases = false
