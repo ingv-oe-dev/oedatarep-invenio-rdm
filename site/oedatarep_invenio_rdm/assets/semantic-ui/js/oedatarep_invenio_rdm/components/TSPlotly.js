@@ -1,8 +1,11 @@
 import React from "react";
-import Plot from "react-plotly.js";
+import Plotly from "plotly.js-basic-dist-min";
+import createPlotlyComponent from 'react-plotly.js/factory';
 import PropTypes from "prop-types";
 
 export const TSPlotly = ({ tsdata }) => {
+
+  const Plot = createPlotlyComponent(Plotly)
   var resultValues = [];
 
   for (const [key, value] of Object.entries(tsdata)) {

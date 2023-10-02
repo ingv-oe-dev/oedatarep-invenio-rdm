@@ -81,7 +81,4 @@ celerybeat-schedule*
 scripts
 
 # Site assets symbolic link
-./site/oedatarep_invenio_rdm/assets/semantic-ui/less/site/elements/button.variables
-./site/oedatarep_invenio_rdm/assets/semantic-ui/less/site/globals/site.overrides
-./site/oedatarep_invenio_rdm/assets/semantic-ui/less/site/globals/site.variables
-./site/oedatarep_invenio_rdm/assets/semantic-ui/less/site/theme/theme.less
+site/oedatarep_invenio_rdm/assets/semantic-ui/less/site/*
