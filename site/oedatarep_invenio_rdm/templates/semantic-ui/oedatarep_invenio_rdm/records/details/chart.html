@@ -10,8 +10,8 @@
   show_alternate_identifiers, show_related_identifiers, show_funding, show_dates %}
 
     <section id="recordPlotlySection" class="rel-mt-2" aria-label="{{ _('Record chart') }}">
-      {% if record.metadata.ts_resources[0].ts_published %}
-        {% set chartresource = record.metadata.ts_resources | tojson %}
+      {% if record.custom_fields["ingv:ts_resources"][0].ts_published %}
+        {% set chartresource = record.custom_fields["ingv:ts_resources"] | tojson %}
         <div id="recordPlotly" data-chartresource='{{ chartresource }}'></div>
       {% endif %}
     </section>

@@ -10,7 +10,6 @@ check-manifest = ">=0.25"
 invenio-assets = {path = "../invenio-assets"}
 invenio-app-rdm = {extras = ["postgresql", "opensearch2"], version = "~=11.0.0"}
 oedatarep-invenio-rdm = {editable="True", path="./site"}
-invenio-rdm-records = {extras = ["opensearch2"], path = "../invenio-rdm-records"}
 oedatarep-ts-loader = {path = "../oedatarep-ts-loader"}
 
 uwsgi = ">=2.0"

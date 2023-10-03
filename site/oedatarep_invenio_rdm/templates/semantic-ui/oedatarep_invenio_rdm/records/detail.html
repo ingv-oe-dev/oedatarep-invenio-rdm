@@ -280,7 +280,7 @@
             {%- endblock record_map -%}
 
             {%- block record_chart -%}
-              {% if record.metadata.ts_resources %}
+              {% if record.custom_fields["ingv:ts_resources"] %}
                 <section id="plotly-chart" class="rel-mt-2" aria-label="{{ _('Record chart') }}">
                   {%- include "oedatarep_invenio_rdm/records/details/chart.html" %}
                 </section>
