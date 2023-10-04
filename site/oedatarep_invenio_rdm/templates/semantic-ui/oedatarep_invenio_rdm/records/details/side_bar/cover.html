@@ -1,5 +1,5 @@
-{% if record.metadata.cover %}
-{% set src = record.metadata.cover %}
+{% if record.custom_fields["ingv:cover"] %}
+{% set src = record.custom_fields["ingv:cover"] %}
 <section id="record-cover" aria-label="Record cover" class="ui segment rdm-sidebar">
   <h2 class="ui small header"><i aria-hidden="true" class="picture mini icon"></i>Cover</h2>
   <div class="cover">
