@@ -1,0 +1,7 @@
+<dt class="ui tiny header">{{ _("Time Series Metadata")}}</dt>
+
+{% for value in field_value %} 
+	<p><b>{{value.get("name", "Unknown")}}</b></p> ({{
+		_("Guid") }}: {{value.get("guid", "Unknown")}}) {{ ", " if not loop.last }} 
+		_("TSD url") }}: {{value.get("tsdws_url", "Unknown")}}) {{ ", " if not loop.last }}
+{% endfor %}
