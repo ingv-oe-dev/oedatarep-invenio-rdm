@@ -72,7 +72,7 @@ services:
       - static_data:/opt/invenio/var/instance/static
       - uploaded_data:/opt/invenio/var/instance/data
       - archived_data:/opt/invenio/var/instance/archive
-
+      - ./invenio.cfg:/opt/invenio/var/instance/invenio.cfg
   # API Rest Application
   web-api:
     extends:
@@ -85,7 +85,7 @@ services:
     volumes:
       - uploaded_data:/opt/invenio/var/instance/data
       - archived_data:/opt/invenio/var/instance/archive
-
+      - ./invenio.cfg:/opt/invenio/var/instance/invenio.cfg
   # Worker
   worker:
     extends:
@@ -95,6 +95,7 @@ services:
     image: oedatarep-invenio-rdm:latest
     volumes:
       - uploaded_data:/opt/invenio/var/instance/data
+      - ./invenio.cfg:/opt/invenio/var/instance/invenio.cfg
     depends_on:
       search:
         condition: service_started
