@@ -79,3 +79,6 @@ celerybeat-schedule*
 
 #Custom scripts
 scripts
+
+# Site assets symbolic link
+site/oedatarep_invenio_rdm/assets/semantic-ui/less/site/*
