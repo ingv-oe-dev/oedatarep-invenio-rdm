@@ -1,6 +1,29 @@
-<dt class="ui tiny header">{{ _("Time Series Metadata")}}</dt>
+{% for value in field_value %}
+<dt class="ui tiny header">{{value.get("name", "Unknown")}}</dt>
+<dd>
+	<div>{{value.get("description", "Unknown")}}</div>
+	{% set header = value.header %}
+	<div class="text-muted ">Start time: {{header.get("starttime", "Unknown")}}, End time: {{header.get("starttime", "Unknown")}}, Sampling: {{ header.get("sampling", "-") }}s</div>
+</dd>
 
-{% for value in field_value %} 
-	<p><b>{{value.get("name", "Unknown")}}</b></p> ({{_("Guid") }}: {{value.get("guid", "Unknown")}}) {{ ", " if not loop.last }} 
-		{{_("TSD url") }}: ({{value.get("tsdws_url", "Unknown")}}) {{ ", " if not loop.last }}
+<table class="ui celled padded table">
+	<thead class="">
+		<tr class="">
+			<th class="single line">Field Name</th>
+			<th class="">Type</th>
+			<th class="">Unit</th>
+			<th class="">Description</th>
+		</tr>
+	</thead>
+	<tbody class="">
+		{% for column in header.columns %}
+		<tr class="">
+			<td class="ui tiny header single line">{{ column.get("name", "-")}}</td>
+			<td class="single line">{{ column.get("type", "-")}}</td>
+			<td class="single line">{{ column.get("unit", "-")}}</td>
+			<td class="">{{ column.get("description", "-")}}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
 {% endfor %}
