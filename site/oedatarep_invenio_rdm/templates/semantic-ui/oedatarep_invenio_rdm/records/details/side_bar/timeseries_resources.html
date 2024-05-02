@@ -17,7 +17,7 @@
                         {% for ts in published %}
                             <div role="listitem"><b>{{ ts.name }}</b>
                                 <div role="list" class="ui list">
-                                    <div role="listitem" class=""><a href="{{ tsdws }}/swagger-ui/dist?timeseries_id={{ ts.guid }}&origin=oedatarep" target="_blank">Query builder</a></div>
+                                    <div role="listitem" class=""><a href="{{ tsdws }}/swagger-ui/dist/oedatarep.php?timeseries_id={{ ts.guid }}&origin=oedatarep" target="_blank">Query builder</a></div>
                                     <div role="listitem" class=""><a href="{{ ts.tsdws_url }}" target="_blank">Preview data</a></div>
                                 </div>
                             </div>
