@@ -10,7 +10,6 @@ theme = WebpackThemeBundle(
         "semantic-ui": dict(
             entry={
                 # Add your webpack entrypoints
-                "oedatarep-support": "./js/oedatarep_invenio_rdm/support.js",
                 "oedatarep-landing-page": "./js/oedatarep_invenio_rdm/landing_page/index.js",
             },
             dependencies={
