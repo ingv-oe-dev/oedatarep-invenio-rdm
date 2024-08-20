@@ -45,17 +45,6 @@ export const LeafletLocations = ({ locations }) => {
     <Loading />
   ) : (
     <Container>
-      <List>
-        {locs.map((el) => (
-          <List.Item key={el.place.toString}>
-            <List.Icon name="marker" />
-            <List.Content>
-              <List.Header>{el.place}</List.Header>
-              <List.Description> {el.description}</List.Description>
-            </List.Content>
-          </List.Item>
-        ))}
-      </List>
       {markers.length > 0 ? <LocationsMapPreview markers={markers} /> : ""}
     </Container>
   );

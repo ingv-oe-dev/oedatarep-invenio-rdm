@@ -11,16 +11,15 @@
 FROM registry.cern.ch/inveniosoftware/almalinux:1
 
 ARG OEDATAREP_RELEASE
-ARG NVM_VERS
-ARG NODE_VERS
+# ARG NVM_VERS
+# ARG NODE_VERS
 
 # Clone custom repositories
-RUN git clone --depth 1 --branch ${OEDATAREP_RELEASE} https://github.com/ingv-oe-dev/invenio-assets.git ../invenio-assets
 RUN git clone --depth 1 --branch ${OEDATAREP_RELEASE} https://github.com/ingv-oe-dev/oedatarep-ts-loader.git ../oedatarep-ts-loader
 
 COPY site ./site
 COPY Pipfile Pipfile.lock ./
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/${NVM_VERS}/install.sh | bash
+# RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/${NVM_VERS}/install.sh | bash
 RUN pipenv install --deploy --system --pre
 
 COPY ./docker/uwsgi/ ${INVENIO_INSTANCE_PATH}
@@ -30,9 +29,10 @@ COPY ./app_data/ ${INVENIO_INSTANCE_PATH}/app_data/
 COPY ./translations/ ${INVENIO_INSTANCE_PATH}/translations/
 COPY ./ .
 
-RUN source ~/.bash_profile && nvm install ${NODE_VERS}
+# RUN source ~/.bash_profile && nvm install ${NODE_VERS}
 RUN source ~/.bash_profile && \
-    nvm use ${NODE_VERS} && \
+    npm config set legacy-peer-deps true && \
+    # nvm use ${NODE_VERS} && \
     cp -r ./static/. ${INVENIO_INSTANCE_PATH}/static/ && \
     cp -r ./assets/. ${INVENIO_INSTANCE_PATH}/assets/ && \
     rm -rf /opt/invenio/src/site/oedatarep_invenio_rdm/assets/semantic-ui/less && \

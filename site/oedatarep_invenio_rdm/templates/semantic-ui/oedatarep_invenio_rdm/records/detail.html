@@ -1,5 +1,18 @@
 {%- extends "invenio_app_rdm/records/detail.html" %}
 
+{# Description #}
+  {%- block record_content -%}
+    {%- include "invenio_app_rdm/records/details/description.html" %}
+    {%- block record_chart -%}
+      {% if record.custom_fields["ingv:ts_resources"] %}
+        <section id="plotly-chart" class="rel-mt-2" aria-label="{{ _('Record chart') }}">
+          {%- include "oedatarep_invenio_rdm/records/details/chart.html" %}
+        </section>
+      {% endif %}
+    {%- endblock record_chart -%}
+{%- endblock record_content -%}
+
+
 
 {%- block javascript %}
   {% if config.THEME_MATHJAX_CDN %}
