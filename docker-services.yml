@@ -5,7 +5,7 @@ services:
       context: ./
       args:
         - ENVIRONMENT=DEV
-        - OEDATAREP_RELEASE=v11.x-oe
+        - OEDATAREP_RELEASE=v12.x-oe
         - NVM_VERS=v0.39.5
         - NODE_VERS=v14.21.3
     image: oedatarep-invenio-rdm
