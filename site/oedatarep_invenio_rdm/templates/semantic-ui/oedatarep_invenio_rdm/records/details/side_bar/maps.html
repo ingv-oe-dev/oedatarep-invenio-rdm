@@ -6,15 +6,22 @@ it under the terms of the MIT License; see LICENSE file for more details.
 #}
 
 {% if record.metadata.locations %}
+  {% set locations = record.metadata.locations %}
+  {% set map = namespace(flag=False) %}
+  {% for feature in locations.features %}
+    {% set map.flag = feature.geometry is defined or map.flag %}
+  {% endfor %}
 
-<div class="sidebar-container">
-  <h2 class="ui medium top attached header mt-0">{{ _('Maps')}}</h2>
-  <div id="maps-locations" class="ui segment bottom attached rdm-sidebar">
-    <dl class="details-list mt-0">
-      {% set maps = record.metadata.locations %}
-      <div id="leaflet-locations" data-locations='{{ maps | tojson }}'></div>
-    </dl>
-  </div>
-</div>
+  {% if map.flag == True %}
+    <div class="sidebar-container">
+      <h2 class="ui medium top attached header mt-0">{{ _('Maps')}}</h2>
+      <div id="maps-locations" class="ui segment bottom attached rdm-sidebar">
+        <dl class="details-list mt-0">
+          {% set maps = record.metadata.locations %}
+          <div id="leaflet-locations" data-locations='{{ maps | tojson }}'></div>
+        </dl>
+      </div>
+    </div>
+  {% endif %}
 
 {% endif %}
