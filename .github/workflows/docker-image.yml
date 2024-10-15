@@ -30,4 +30,4 @@ jobs:
       uses: docker/build-push-action@v6.9.0
       with:
         push: true
-        tags: oedatarep/oedatarep-invenio-rdm:$OEDATAREP_RELEASE
+        tags: oedatarep/oedatarep-invenio-rdm:${{ vars.OEDATAREP_RELEASE }}
