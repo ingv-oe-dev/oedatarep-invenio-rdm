@@ -1,0 +1,34 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout source code
+    - uses: actions/checkout@v4
+      with:
+          ref: 'main'
+
+    # Login to Docker Hub
+    - name: Docker Login
+      uses: docker/login-action@v3.3.0
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+    # Push image to registry
+    - name: Build and push Docker images
+      uses: docker/build-push-action@v6.9.0
+      with:
+        push: true
+        build-args: |
+          OEDATAREP_RELEASE=${{ vars.OEDATAREP_RELEASE }}
+        tags: oedatarep/oedatarep-invenio-rdm:${{ vars.OEDATAREP_RELEASE }}
