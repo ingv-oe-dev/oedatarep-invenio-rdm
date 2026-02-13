@@ -6,7 +6,7 @@
 #
 # Usage::
 #
-#   $ docker-compose up -f docker-compose.full.yml -d
+#   $ docker compose up -f docker-compose.full.yml -d
 #
 # Following services are included:
 # - Frontend: Nginx (exposed ports: 40 and 443)
@@ -15,10 +15,9 @@
 # - Cache: Redis (exposed port: 6379)
 # - DB: (PostgresSQL/MySQL) (exposed port: 5432 or 3306)
 # - Message queue: RabbitMQ (exposed ports: 5672, 15672)
-# - Elasticsearch (exposed ports: 9200, 9300)
-# - Kibana (view ES indexes) (exposed ports: 5601)
+# - Search platform: (OpenSearch) (exposed ports: 9200, 9600)
+# - OpenSearch Dashboard/Kibana (view OS/ES indexes) (exposed ports: 5601)
 #
-version: '2.2'
 services:
   cache:
     extends:
@@ -57,8 +56,8 @@ services:
       - web-ui
       - web-api
     ports:
-      - "80:80"
-      - "443:443"
+      - "${DOCKER_SERVICES_IP_BIND:-127.0.0.1}:80:80"
+      - "${DOCKER_SERVICES_IP_BIND:-127.0.0.1}:443:443"
   # UI Application
   web-ui:
     extends:
@@ -67,7 +66,7 @@ services:
     command: ["uwsgi /opt/invenio/var/instance/uwsgi_ui.ini"]
     image: oedatarep-invenio-rdm:latest
     ports:
-      - "5000"
+      - "${DOCKER_SERVICES_IP_BIND:-127.0.0.1}:5000:5000"
     volumes:
       - static_data:/opt/invenio/var/instance/static
       - uploaded_data:/opt/invenio/var/instance/data
@@ -81,7 +80,7 @@ services:
     command: ["uwsgi /opt/invenio/var/instance/uwsgi_rest.ini"]
     image: oedatarep-invenio-rdm:latest
     ports:
-      - "5000"
+      - "${DOCKER_SERVICES_IP_BIND:-127.0.0.1}:5001:5000"
     volumes:
       - uploaded_data:/opt/invenio/var/instance/data
       - archived_data:/opt/invenio/var/instance/archive
@@ -91,7 +90,7 @@ services:
     extends:
       file: docker-services.yml
       service: app
-    command: ["celery -A invenio_app.celery worker -B --loglevel=INFO"]
+    command: ["celery -A invenio_app.celery worker --beat --loglevel=INFO"]
     image: oedatarep-invenio-rdm:latest
     volumes:
       - uploaded_data:/opt/invenio/var/instance/data
@@ -104,6 +103,18 @@ services:
       db:
         condition: service_started
       mq:
+        condition: service_started
+
+  # Jobs scheduler
+  scheduler:
+    extends:
+      file: docker-services.yml
+      service: app
+    command: ["celery -A invenio_app.celery beat --scheduler invenio_jobs.services.scheduler:RunScheduler --loglevel=INFO"]
+    depends_on:
+      mq:
+        condition: service_started
+      db:
         condition: service_started
 volumes:
   static_data:
