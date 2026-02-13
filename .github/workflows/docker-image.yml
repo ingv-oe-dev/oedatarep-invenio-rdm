@@ -13,7 +13,7 @@ jobs:
     # Checkout source code
     - uses: actions/checkout@v4
       with:
-          ref: 'test-build'
+          ref: 'main'
 
     # Login to Docker Hub
     - name: Docker Login
