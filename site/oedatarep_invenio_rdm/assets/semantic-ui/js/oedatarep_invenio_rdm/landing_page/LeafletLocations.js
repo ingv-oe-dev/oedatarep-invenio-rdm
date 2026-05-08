@@ -1,55 +1,55 @@
-import React, { useEffect, useState } from "react";
-import { Container, List } from "semantic-ui-react";
+import React, { useMemo } from "react";
+import { Container } from "semantic-ui-react";
 import { LocationsMapPreview } from "../components/LocationsMapPreview";
-import { Loading } from "../components/CustomComponents";
 import PropTypes from "prop-types";
 
 export const LeafletLocations = ({ locations }) => {
-  const [locs, setLocations] = useState({});
-  const [markers, setMarkers] = useState({});
-  const [loading, setLoading] = useState(true);
+  const markers = useMemo(() => {
+    if (!locations || !Array.isArray(locations.features)) {
+      return [];
+    }
 
-  useEffect(() => {
-    const markers = [];
-    const locs = [];
-    locations.features.forEach((element) => {
-      if (element.geometry) {
-        switch (element.geometry.type) {
-          case "Point":
-            markers.push({
-              latlng: element.geometry.coordinates.reverse(),
-              place: element.place ? element.place : "",
-              description: element.description ? element.description : "",
-            });
-            break;
-          default:
-            locs.push({
-              place: element.place ? element.place : "",
-              description: element.description ? element.description : "",
-            });
-            break;
-        }
-      } else {
-        locs.push({
-          place: element.place ? element.place : "",
-          description: element.description ? element.description : "",
-        });
-      }
-    });
-    setLocations(locs);
-    setMarkers(markers);
-    setLoading(false);
-  }, []);
+    return locations.features
+      .filter(
+        (feature) =>
+          feature.geometry &&
+          feature.geometry.type === "Point" &&
+          Array.isArray(feature.geometry.coordinates) &&
+          feature.geometry.coordinates.length >= 2
+      )
+      .map((feature) => {
+        const [lng, lat] = feature.geometry.coordinates;
 
-  return loading ? (
-    <Loading />
-  ) : (
+        return {
+          latlng: [lat, lng],
+          place: feature.place || "",
+          description: feature.description || "",
+        };
+      });
+  }, [locations]);
+
+  if (markers.length === 0) {
+    return null;
+  }
+
+  return (
     <Container>
-      {markers.length > 0 ? <LocationsMapPreview markers={markers} /> : ""}
+      <LocationsMapPreview markers={markers} />
     </Container>
   );
 };
 
 LeafletLocations.propTypes = {
-  locations: PropTypes.object.isRequired,
+  locations: PropTypes.shape({
+    features: PropTypes.arrayOf(
+      PropTypes.shape({
+        geometry: PropTypes.shape({
+          type: PropTypes.string,
+          coordinates: PropTypes.arrayOf(PropTypes.number),
+        }),
+        place: PropTypes.string,
+        description: PropTypes.string,
+      })
+    ),
+  }).isRequired,
 };
