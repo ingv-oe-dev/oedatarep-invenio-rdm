@@ -4,7 +4,15 @@ import iconRetinaUrl from "leaflet/dist/images/marker-icon-2x.png";
 import shadowUrl from "leaflet/dist/images/marker-shadow.png";
 
 export const icon = new L.Icon({
-  iconUrl: iconUrl,
-  iconRetinaUrl: iconRetinaUrl,
-  shadowUrl: shadowUrl,
+  iconUrl,
+  iconRetinaUrl,
+  shadowUrl,
+
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+
+  popupAnchor: [1, -34],
+
+  shadowSize: [41, 41],
+  shadowAnchor: [12, 41],
 });

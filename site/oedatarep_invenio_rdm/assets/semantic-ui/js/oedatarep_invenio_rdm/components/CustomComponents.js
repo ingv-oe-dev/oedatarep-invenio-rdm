@@ -5,14 +5,18 @@ import { icon } from "../landing_page/LeafletIcons";
 import PropTypes from "prop-types";
 
 export const CustomMarker = ({ position }) => {
+  const { latlng, place, description } = position;
+
   return (
-    <Marker position={position.latlng} icon={icon}>
+    <Marker position={latlng} icon={icon}>
       <Popup>
         <List>
           <List.Item>
             <List.Content>
-              <List.Header>{position.place}</List.Header>
-              <List.Description> {position.description}</List.Description>
+              {place && <List.Header>{place}</List.Header>}
+              {description && (
+                <List.Description>{description}</List.Description>
+              )}
             </List.Content>
           </List.Item>
         </List>
@@ -22,7 +26,7 @@ export const CustomMarker = ({ position }) => {
 };
 
 export const Loading = () => (
-  <Placeholder>
+  <Placeholder fluid>
     <Placeholder.Line />
     <Placeholder.Line />
     <Placeholder.Line />
@@ -32,5 +36,9 @@ export const Loading = () => (
 );
 
 CustomMarker.propTypes = {
-  position: PropTypes.object.isRequired,
+  position: PropTypes.shape({
+    latlng: PropTypes.arrayOf(PropTypes.number).isRequired,
+    place: PropTypes.string,
+    description: PropTypes.string,
+  }).isRequired,
 };
