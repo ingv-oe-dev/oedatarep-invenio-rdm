@@ -10,6 +10,9 @@ resourcetypes:
   pid-type: rsrct
   data-file: vocabularies/resource_types.yaml
 
+classifications:
+  pid-type: clss
+  data-file: vocabularies/classifications.yaml
   
 # TODO: Uncoment this if you want to have all affiliations with ROR identifiers.
 # affiliations:

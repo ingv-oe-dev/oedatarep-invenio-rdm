@@ -1,0 +1,151 @@
+{# File: templates/semantic-ui/invenio_app_rdm/frontpage.html #}
+
+{% from "invenio_app_rdm/macros/records_list.html" import records_list %}
+{% from "invenio_communities/macros/communities_carousel.html" import communities_carousel %}
+
+{%- extends "invenio_theme/frontpage.html" %}
+
+{%- block page_header %}
+  {%- include "invenio_app_rdm/header_frontpage.html" %}
+{%- endblock page_header %}
+
+{%- block page_body %}
+
+  {%- block intro_section %}
+    {% if show_intro_section %}
+      {% include "invenio_app_rdm/intro_section.html" %}
+    {% endif %}
+  {%- endblock intro_section %}
+
+  {%- block top_banner %}
+    {{ communities_carousel() }}
+  {%- endblock top_banner %}
+
+  {%- block grid_section %}
+    <div class="ui stackable grid container rel-mt-2">
+    
+      {% block main_column %}
+      <div class="eleven wide computer sixteen wide tablet column">
+    
+        {% block main_column_content %}
+          {{ records_list() }}
+        {% endblock main_column_content %}
+    
+      </div>
+      {% endblock main_column %}
+
+      {% block side_column %}
+      <aside class="five wide computer sixteen wide tablet column">
+        {% block side_column_content %}
+        
+          {% set stats = get_repository_stats() %}
+        
+          <div class="ui segment">
+          
+            <h3 class="ui dividing header">
+              <i class="chart bar outline icon"></i>
+              {{ _("Repository Statistics") }}
+            </h3>
+          
+            {# Uso di 'divided list' per linee di separazione pulite e native #}
+            <div class="ui relaxed divided list rel-mt-1" style="font-size: 1.1em;">
+          
+              {# Record Totali #}
+              <div class="item rel-pb-1">
+                <i class="file alternate icon"></i>
+                <div class="content">
+                  <span style="font-weight: bold; font-size: 1.2em; margin-right: 8px;">
+                    {{ stats.total_records }}
+                  </span>
+                  <a href="/search">{{ _("Published Records") }}</a>
+                </div>
+              </div>
+          
+              {# Blocco Classificazioni INGV #}
+              {% if stats.config.show_classifications %}
+              <div class="item rel-pt-1 rel-pb-1">
+                <i class="folder open outline icon"></i>
+                <div class="content">
+                  <div class="header" style="margin-bottom: 8px;">{{ _("INGV Classifications") }}</div>
+                  <div class="list" style="padding-left: 16px;">
+                    {% for c in stats.top_classifications %}
+                    <div class="item rel-mb-1">
+                      <div class="content">
+                        <span style="font-weight: bold; margin-right: 8px;">{{ c.count }}</span>
+                        <a href="/search?q=custom_fields.ingv%5C:classification.id:{{ c.id }}">{{ c.display_name }}</a>
+                      </div>
+                    </div>
+                    {% else %}
+                    <div class="item">
+                      <div class="content" style="color: grey; font-style: italic;">{{ _("No classifications found.") }}</div>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+          
+              {# Blocco Estensioni File #}
+              {% if stats.config.show_files %}
+              <div class="item rel-pt-1 rel-pb-1">
+                <i class="cogs icon"></i>
+                <div class="content">
+                  <div class="header" style="margin-bottom: 8px;">{{ _("File Extensions") }}</div>
+                  <div class="list" style="padding-left: 16px;">
+                    {% for f in stats.file_extensions %}
+                    <div class="item rel-mb-1">
+                      <div class="content">
+                        <span style="font-weight: bold; margin-right: 8px;">{{ f.count }}</span>
+                        <a href="/search?q=files.entries.ext:{{ f.ext }}">
+                          {% trans ext=f.ext %}Files in .{{ ext }} format{% endtrans %}
+                        </a>
+                      </div>
+                    </div>
+                    {% else %}
+                    <div class="item">
+                      <div class="content" style="color: grey; font-style: italic;">{{ _("No files found.") }}</div>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+          
+              {# Blocco Parole Chiave / Subjects #}
+              {% if stats.config.show_subjects %}
+              <div class="item rel-pt-1">
+                <i class="tags icon"></i>
+                <div class="content">
+                  <div class="header" style="margin-bottom: 8px;">{{ _("Keywords") }}</div>
+                  <div class="list" style="padding-left: 16px;">
+                    {% for s in stats.top_subjects %}
+                    <div class="item rel-mb-1">
+                      <div class="content">
+                        <span style="font-weight: bold; margin-right: 8px;">{{ s.count }}</span>
+                        <a href="/search?q=metadata.subjects.subject:{{ s.display_name | urlencode }}">{{ s.display_name }}</a>
+                      </div>
+                    </div>
+                    {% else %}
+                    <div class="item">
+                      <div class="content" style="color: grey; font-style: italic;">{{ _("No keywords found.") }}</div>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+          
+            </div>
+          </div>
+        
+        {% endblock side_column_content %}
+      </aside>
+      {% endblock side_column %}
+      </div>
+    </div>
+  {%- endblock grid_section %}
+
+  {%- block bottom_section %}
+  {%- endblock bottom_section %}
+
+{%- endblock page_body %}

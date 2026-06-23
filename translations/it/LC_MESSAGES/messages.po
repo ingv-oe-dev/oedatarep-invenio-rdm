@@ -1,0 +1,100 @@
+# Italian translations for PROJECT.
+# Copyright (C) 2026 INGV-OE
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: info@oedatarep-invenio-rdm.com\n"
+"POT-Creation-Date: 2026-06-22 17:20+0200\n"
+"PO-Revision-Date: 2026-06-22 16:33+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: it\n"
+"Language-Team: it <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: /home/bizio/Workbench/INGV/oedatarep-dev/oedatarep-invenio-rdm/invenio.cfg:387
+#, fuzzy
+msgid "INGV Classification"
+msgstr "Classificazioni INGV"
+
+#: /home/bizio/Workbench/INGV/oedatarep-dev/oedatarep-invenio-rdm/site/oedatarep_invenio_rdm/templates/semantic-ui/oedatarep_invenio_rdm/footer.html:24
+msgid "Listed in"
+msgstr ""
+
+#: /home/bizio/Workbench/INGV/oedatarep-dev/oedatarep-invenio-rdm/site/oedatarep_invenio_rdm/templates/semantic-ui/oedatarep_invenio_rdm/header.html:41
+msgid "Requests"
+msgstr ""
+
+#: /home/bizio/Workbench/INGV/oedatarep-dev/oedatarep-invenio-rdm/site/oedatarep_invenio_rdm/templates/semantic-ui/oedatarep_invenio_rdm/header.html:43
+msgid "Inbox"
+msgstr ""
+
+#: /home/bizio/Workbench/INGV/oedatarep-dev/oedatarep-invenio-rdm/site/oedatarep_invenio_rdm/templates/semantic-ui/oedatarep_invenio_rdm/records/detail.html:8
+#: /home/bizio/Workbench/INGV/oedatarep-dev/oedatarep-invenio-rdm/site/oedatarep_invenio_rdm/templates/semantic-ui/oedatarep_invenio_rdm/records/details/chart.html:12
+msgid "Record chart"
+msgstr ""
+
+#: /home/bizio/Workbench/INGV/oedatarep-dev/oedatarep-invenio-rdm/site/oedatarep_invenio_rdm/templates/semantic-ui/oedatarep_invenio_rdm/records/details/side_bar/maps.html:17
+msgid "Maps"
+msgstr ""
+
+#: /home/bizio/Workbench/INGV/oedatarep-dev/oedatarep-invenio-rdm/site/oedatarep_invenio_rdm/templates/semantic-ui/oedatarep_invenio_rdm/records/details/side_bar/timeseries_resources.html:14
+#: /home/bizio/Workbench/INGV/oedatarep-dev/oedatarep-invenio-rdm/site/oedatarep_invenio_rdm/templates/semantic-ui/oedatarep_invenio_rdm/records/details/side_bar/timeseries_resources.html:15
+msgid "Timeseries resources"
+msgstr ""
+
+#: /home/bizio/Workbench/INGV/oedatarep-dev/oedatarep-invenio-rdm/templates/semantic-ui/invenio_app_rdm/frontpage.html:47
+msgid "Repository Statistics"
+msgstr "Statistiche Repository"
+
+#: /home/bizio/Workbench/INGV/oedatarep-dev/oedatarep-invenio-rdm/templates/semantic-ui/invenio_app_rdm/frontpage.html:60
+msgid "Published Records"
+msgstr "Record Pubblicati"
+
+#: /home/bizio/Workbench/INGV/oedatarep-dev/oedatarep-invenio-rdm/templates/semantic-ui/invenio_app_rdm/frontpage.html:69
+msgid "INGV Classifications"
+msgstr "Classificazioni INGV"
+
+#: /home/bizio/Workbench/INGV/oedatarep-dev/oedatarep-invenio-rdm/templates/semantic-ui/invenio_app_rdm/frontpage.html:80
+msgid "No classifications found."
+msgstr "Nessuna classificazione presente."
+
+#: /home/bizio/Workbench/INGV/oedatarep-dev/oedatarep-invenio-rdm/templates/semantic-ui/invenio_app_rdm/frontpage.html:93
+msgid "File Extensions"
+msgstr "Estensioni File"
+
+#: /home/bizio/Workbench/INGV/oedatarep-dev/oedatarep-invenio-rdm/templates/semantic-ui/invenio_app_rdm/frontpage.html:100
+#, python-format
+msgid "Files in .%(ext)s format"
+msgstr "File in formato .%(ext)s"
+
+#: /home/bizio/Workbench/INGV/oedatarep-dev/oedatarep-invenio-rdm/templates/semantic-ui/invenio_app_rdm/frontpage.html:106
+msgid "No files found."
+msgstr "Nessun file trovato."
+
+#: /home/bizio/Workbench/INGV/oedatarep-dev/oedatarep-invenio-rdm/templates/semantic-ui/invenio_app_rdm/frontpage.html:119
+msgid "Keywords"
+msgstr "Parole Chiave"
+
+#: /home/bizio/Workbench/INGV/oedatarep-dev/oedatarep-invenio-rdm/templates/semantic-ui/invenio_app_rdm/frontpage.html:130
+msgid "No keywords found."
+msgstr "Nessuna parola chiave presente."
+
+#: /home/bizio/Workbench/INGV/oedatarep-dev/oedatarep-invenio-rdm/templates/semantic-ui/invenio_app_rdm/site_footer.html:6
+#, python-format
+msgid "Operated by <a href=\"%(ingv_oe)s\">INGV - OE</a>"
+msgstr ""
+
+#: /home/bizio/Workbench/INGV/oedatarep-dev/oedatarep-invenio-rdm/templates/semantic-ui/invenio_app_rdm/site_footer.html:7
+#, python-format
+msgid ""
+"Powered by <a\n"
+"            href=\"%(invenio_rdm)s\">InvenioRDM</a>"
+msgstr ""
+
