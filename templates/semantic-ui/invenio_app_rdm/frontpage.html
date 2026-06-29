@@ -135,6 +135,34 @@
               </div>
               {% endif %}
           
+              {# Chiama la nuova funzione per ottenere i dati sulle persone #}
+              {% set people_stats = get_people_stats() %}
+              
+              {# Blocco Autori e Contributori #}
+              <div class="item rel-pt-1 rel-pb-1">
+                <i class="users icon"></i>
+                <div class="content">
+                  <div class="header" style="margin-bottom: 8px;">{{ _("Community") }}</div>
+                  <div class="list" style="padding-left: 16px;">
+              
+                    <div class="item rel-mb-1">
+                      <div class="content">
+                        <span style="font-weight: bold; margin-right: 8px;">{{ people_stats.unique_creators_count }}</span>
+                        {{ _("Unique Authors") }}
+                      </div>
+                    </div>
+              
+                    <div class="item rel-mb-1">
+                      <div class="content">
+                        <span style="font-weight: bold; margin-right: 8px;">{{ people_stats.unique_contributors_count }}</span>
+                        {{ _("Unique Contributors") }}
+                      </div>
+                    </div>
+              
+                  </div>
+                </div>
+              </div>
+              
             </div>
           </div>
         

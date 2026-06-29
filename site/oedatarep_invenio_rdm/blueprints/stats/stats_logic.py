@@ -22,7 +22,7 @@ def get_classifications_map():
     vocabularies_path = current_app.config.get("OEDATAREP_VOCABULARIES_PATH")
 
     if not vocabularies_path:
-        log.error("Configurazione OEDATAREP_VOCABULARIES_PATH mancante in invenio.cfg")
+        log.error("Configurations OEDATAREP_VOCABULARIES_PATH missing in invenio.cfg")
         return {}
     
     yaml_path = os.path.join(vocabularies_path, "classifications.yaml")
@@ -41,10 +41,10 @@ def get_classifications_map():
                 
         # Salviamo il risultato nella cache globale
         _CACHED_CLASSIFICATIONS_MAP = new_map
-        log.info("Vocabolario YAML delle classificazioni caricato in memoria con successo.")
+        log.info("YAML classifications vocabolary loaded in memory with success.")
         
     except Exception as e:
-        log.error(f"Errore durante la lettura di classifications.yaml: {e}")
+        log.error(f"Error during reading classifications.yaml: {e}")
     
     return new_map
 
@@ -133,6 +133,57 @@ def get_repository_stats():
                 })
 
     except Exception as e:
-        log.warning(f"Errore statistiche OpenSearch: {e}")
+        log.warning(f"Error statistichs OpenSearch: {e}")
+        
+    return stats
+
+def get_people_stats():
+    """Recupera il conteggio totale e la top list di autori e contributori."""
+    
+    index_name = "rdmrecords-records"
+    
+    query = {
+        "size": 0,
+        "query": {
+            "bool": {
+                "must": [
+                    { "term": { "is_published": True } },
+                    { "term": { "versions.is_latest": True } },
+                    { "term": { "is_deleted": False } }
+                ]
+            }
+        },
+        "aggs": {
+            "unique_authors_total": {
+                "cardinality": { "field": "metadata.creators.person_or_org.identifiers.identifier" }
+            },
+            "unique_contributors_total": {
+                "cardinality": { "field": "metadata.contributors.person_or_org.identifiers.identifier" }
+            }
+        }
+    }
+    
+    stats = {
+        "unique_creators_count": 0,
+        "unique_contributors_count": 0,
+        "top_creators_list": []
+    }
+    
+    try:
+        res = current_search_client.search(index=index_name, body=query)
+        aggs = res.get("aggregations", {})
+        
+        if "unique_authors_total" in aggs:
+            stats["unique_creators_count"] = aggs["unique_authors_total"]["value"]
+            
+        if "unique_contributors_total" in aggs:
+            stats["unique_contributors_count"] = aggs["unique_contributors_total"]["value"]
+            
+        if "top_authors" in aggs:
+            buckets = aggs["top_authors"]["buckets"]
+            stats["top_creators_list"] = [{"name": b["key"], "count": b["doc_count"]} for b in buckets]
+            
+    except Exception as e:
+        log.warning(f"Error query persons OpenSearch: {e}")
         
     return stats
