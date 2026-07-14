@@ -1,0 +1,79 @@
+name: Bug report
+description: Report a reproducible problem in OEDataRep
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a problem. Please provide enough information
+        to help us understand and reproduce it.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Problem description
+      description: Describe the problem clearly and concisely.
+      placeholder: What happened?
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: Describe what you expected to happen.
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Describe what happened instead.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Provide the smallest reliable sequence of steps that reproduces the problem.
+      placeholder: |
+        1. Go to ...
+        2. Select ...
+        3. Observe ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Include relevant browser, operating system, OEDataRep branch or release, and other useful version information.
+      placeholder: |
+        Browser:
+        Operating system:
+        OEDataRep branch or release:
+        Other relevant versions:
+    validations:
+      required: false
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Logs, screenshots, or additional context
+      description: Add useful evidence after removing credentials, personal data, and other sensitive information.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Pre-submission checks
+      options:
+        - label: I searched the existing issues and did not find a duplicate.
+          required: true
+        - label: I removed credentials, personal data, and other sensitive information.
+          required: true
