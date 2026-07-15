@@ -1,0 +1,61 @@
+name: Feature request
+description: Propose a new capability or improvement for OEDataRep
+title: "[Enhancement]: "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please describe the underlying user or operational need, not only a
+        preferred technical solution.
+
+  - type: textarea
+    id: need
+    attributes:
+      label: Need or problem
+      description: What user, operational, or maintenance need should be addressed?
+    validations:
+      required: true
+
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Expected outcome
+      description: Describe the result or behavior you would like to achieve.
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Add relevant workflows, examples, constraints, or background information.
+    validations:
+      required: false
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Describe any workarounds or alternative approaches already considered.
+    validations:
+      required: false
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact and dependencies
+      description: Note expected compatibility, accessibility, configuration, deployment, or maintenance implications.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Pre-submission checks
+      options:
+        - label: I searched the existing issues and did not find a duplicate.
+          required: true
+        - label: This request describes the underlying need and expected result.
+          required: true
