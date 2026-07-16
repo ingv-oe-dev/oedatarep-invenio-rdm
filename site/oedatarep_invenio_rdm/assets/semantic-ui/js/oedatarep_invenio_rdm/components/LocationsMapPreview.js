@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Map, TileLayer } from "react-leaflet";
 import L from "leaflet";
-import { CustomMarker, Loading } from "./CustomComponents";
+import { CustomMarker, Loading } from "./CustomMapComponents";
 import PropTypes from "prop-types";
 
 export const LocationsMapPreview = ({ markers }) => {
