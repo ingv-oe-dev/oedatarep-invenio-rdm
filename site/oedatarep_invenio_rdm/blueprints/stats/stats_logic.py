@@ -54,6 +54,9 @@ def get_classifications_map():
 def get_repository_stats():
     """Queries OpenSearch dynamically based on invenio.cfg."""
 
+    if not current_app.config.get("OEDATAREP_STATS_SHOW_SIDEBAR", True):
+        return {}
+    
     show_files = current_app.config.get("OEDATAREP_STATS_SHOW_FILES", True)
     show_subjects = current_app.config.get("OEDATAREP_STATS_SHOW_SUBJECTS", True)
     show_classifications = current_app.config.get(
@@ -68,12 +71,7 @@ def get_repository_stats():
         "total_records": 0,
         "file_extensions": [],
         "top_subjects": [],
-        "top_classifications": [],
-        "config": {
-            "show_files": show_files,
-            "show_subjects": show_subjects,
-            "show_classifications": show_classifications,
-        },
+        "top_classifications": []
     }
 
     index_name = "rdmrecords-records"
@@ -163,6 +161,9 @@ def get_repository_stats():
 def get_people_stats():
     """Retrieves total count and top list of creators and contributors."""
 
+    if not current_app.config.get("OEDATAREP_STATS_SHOW_AUTHORS", True):
+        return {}
+    
     index_name = "rdmrecords-records"
 
     query = {

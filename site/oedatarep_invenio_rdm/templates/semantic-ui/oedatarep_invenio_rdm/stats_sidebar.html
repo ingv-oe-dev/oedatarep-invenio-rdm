@@ -10,10 +10,10 @@
       {{ _("Repository Statistics") }}
     </h3>
 
-    {# Uso di 'divided list' per linee di separazione pulite e native #}
+    {# Use 'divided list' to get clean separation lines #}
     <div class="ui relaxed divided list rel-mt-1" style="font-size: 1.1em;">
 
-      {# Record Totali #}
+      {# Total Records #}
       <div class="item rel-pb-1">
         <i class="file alternate icon"></i>
         <div class="content">
@@ -24,8 +24,8 @@
         </div>
       </div>
 
-      {# Blocco Classificazioni INGV #}
-      {% if stats.config.show_classifications %}
+      {# INGV Dataset Classifications #}
+      {% if stats_config.show_classifications %}
       <div class="item rel-pt-1 rel-pb-1">
         <i class="folder open outline icon"></i>
         <div class="content">
@@ -33,7 +33,7 @@
           <div class="list" style="padding-left: 16px;">
             {% for c in stats.top_classifications %}
             <div class="item rel-mb-1">
-              <div class="content">
+              <div class="content" style="word-wrap: break-word; overflow-wrap: break-word; white-space: normal; line-height: 1.4;">
                 <span style="font-weight: bold; margin-right: 8px;">{{ c.count }}</span>
                 <a href="/search?q=custom_fields.ingv%5C:classification.id:{{ c.id }}">{{ c.display_name }}</a>
               </div>
@@ -48,8 +48,8 @@
       </div>
       {% endif %}
 
-      {# Blocco Estensioni File #}
-      {% if stats.config.show_files %}
+      {# File Extensions #}
+      {% if stats_config.show_files %}
       <div class="item rel-pt-1 rel-pb-1">
         <i class="cogs icon"></i>
         <div class="content">
@@ -74,8 +74,8 @@
       </div>
       {% endif %}
 
-      {# Blocco Parole Chiave / Subjects #}
-      {% if stats.config.show_subjects %}
+      {# Keywords / Subjects #}
+      {% if stats_config.show_subjects %}
       <div class="item rel-pt-1">
         <i class="tags icon"></i>
         <div class="content">
@@ -98,10 +98,10 @@
       </div>
       {% endif %}
 
-      {# Chiama la nuova funzione per ottenere i dati sulle persone #}
+      {% if stats_config.show_authors %}
       {% set people_stats = get_people_stats() %}
 
-      {# Blocco Autori e Contributori #}
+      {# Authors and conbributors #}
       <div class="item rel-pt-1 rel-pb-1">
         <i class="users icon"></i>
         <div class="content">
@@ -125,7 +125,7 @@
           </div>
         </div>
       </div>
-
+      {% endif %}
     </div>
   </div>
 

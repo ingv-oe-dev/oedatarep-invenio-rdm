@@ -34,10 +34,12 @@
       </div>
       {% endblock main_column %}
 
-      {% block side_column %}
-        {%include "semantic-ui/oedatarep_invenio_rdm/stats_sidebar.html" %}
-      {% endblock side_column %}
-      </div>
+      {% if stats_config.show_sidebar %}
+        {% block side_column %}
+          {%include "semantic-ui/oedatarep_invenio_rdm/stats_sidebar.html" %}
+        {% endblock side_column %}
+      {% endif%}
+
     </div>
   {%- endblock grid_section %}
 
