@@ -17,7 +17,7 @@ RUN git clone --depth 1 --branch ${OEDATAREP_RELEASE} https://github.com/ingv-oe
 
 COPY site ./site
 COPY Pipfile Pipfile.lock ./
-RUN pipenv install --deploy --system --pre
+RUN pipenv install --deploy --system
 
 COPY ./docker/uwsgi/ ${INVENIO_INSTANCE_PATH}
 COPY ./invenio.cfg ${INVENIO_INSTANCE_PATH}
@@ -26,11 +26,8 @@ COPY ./app_data/ ${INVENIO_INSTANCE_PATH}/app_data/
 COPY ./translations/ ${INVENIO_INSTANCE_PATH}/translations/
 COPY ./ .
 
-RUN source ~/.bash_profile && \
-    npm config set legacy-peer-deps true && \
-    cp -r ./static/. ${INVENIO_INSTANCE_PATH}/static/ && \
+RUN cp -r ./static/. ${INVENIO_INSTANCE_PATH}/static/ && \
     cp -r ./assets/. ${INVENIO_INSTANCE_PATH}/assets/ && \
-    rm -rf /opt/invenio/src/site/oedatarep_invenio_rdm/assets/semantic-ui/less && \
     invenio collect --verbose  && \
     invenio webpack buildall
 
