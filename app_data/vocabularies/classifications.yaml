@@ -1,0 +1,48 @@
+- id: "0"
+  title:
+    it: "Non assegnata"
+    en: "Unassigned"
+- id: "1"
+  title:
+    it: "Dati Vulcanologici"
+    en: "Volcanological Data"
+- id: "2"
+  title:
+    it: "Dati Geochimici (analisi geochimiche di rocce, acque e gas)"
+    en: "Geochemical Data (geochemical analyses of rocks, waters, and gases)"
+- id: "3"
+  title:
+    it: "Dati Geodetici"
+    en: "Geodetic Data"
+- id: "4"
+  title:
+    it: "Dati Sismologici e Infrasonici (terrestri e marini)"
+    en: "Seismological and Infrasonic Data (terrestrial and marine)"
+- id: "5"
+  title:
+    it: "Dati di campioni fisici (campioni e parametri fisici di rocce, minerali e materiali vari)"
+    en: "Physical Sample Data (samples and physical parameters of rocks, minerals, and various materials)"
+- id: "6"
+  title:
+    it: "Dati di Geofisica atmosferica e Aeronomia"
+    en: "Atmospheric Geophysics and Aeronomy Data"
+- id: "7"
+  title:
+    it: "Dati Geologici (terrestri e marini)"
+    en: "Geological Data (terrestrial and marine)"
+- id: "8"
+  title:
+    it: "Dati Geofisici terrestri (Geomagnetici, Geoelettrici, Elettro-Magnetici) e marini"
+    en: "Terrestrial (Geomagnetic, Geoelectric, Electro-Magnetic) and Marine Geophysical Data"
+- id: "9"
+  title:
+    it: "Dati da Modelli Numerici"
+    en: "Numerical Model Data"
+- id: "10"
+  title:
+    it: "Dati di Telerilevamento"
+    en: "Remote Sensing Data"
+- id: "11"
+  title:
+    it: "Dati Bibliografici"
+    en: "Bibliographic Data"

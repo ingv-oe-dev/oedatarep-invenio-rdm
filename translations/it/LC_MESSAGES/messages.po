@@ -1,0 +1,112 @@
+# Italian translations for OEDatarep.
+# Copyright (C) 2026 INGV-OE
+# This file is distributed under the same license as the PROJECT project.
+# OEDatarep Admin <admin.oedatarep@ct.ingv.it>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: info@oedatarep-invenio-rdm.com\n"
+"POT-Creation-Date: 2026-06-26 12:16+0200\n"
+"PO-Revision-Date: 2026-06-22 16:33+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: it\n"
+"Language-Team: it <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: invenio.cfg:387
+#, fuzzy
+msgid "INGV Classification"
+msgstr "Classificazioni INGV"
+
+#: site/oedatarep_invenio_rdm/templates/semantic-ui/oedatarep_invenio_rdm/footer.html:24
+msgid "Listed in"
+msgstr ""
+
+#: site/oedatarep_invenio_rdm/templates/semantic-ui/oedatarep_invenio_rdm/header.html:41
+msgid "Requests"
+msgstr ""
+
+#: site/oedatarep_invenio_rdm/templates/semantic-ui/oedatarep_invenio_rdm/header.html:43
+msgid "Inbox"
+msgstr ""
+
+#: site/oedatarep_invenio_rdm/templates/semantic-ui/oedatarep_invenio_rdm/records/detail.html:8
+#: site/oedatarep_invenio_rdm/templates/semantic-ui/oedatarep_invenio_rdm/records/details/chart.html:12
+msgid "Record chart"
+msgstr "Grafico del Record"
+
+#: site/oedatarep_invenio_rdm/templates/semantic-ui/oedatarep_invenio_rdm/records/details/side_bar/maps.html:17
+msgid "Maps"
+msgstr "Mappe"
+
+#: site/oedatarep_invenio_rdm/templates/semantic-ui/oedatarep_invenio_rdm/records/details/side_bar/timeseries_resources.html:14
+#: site/oedatarep_invenio_rdm/templates/semantic-ui/oedatarep_invenio_rdm/records/details/side_bar/timeseries_resources.html:15
+msgid "Timeseries resources"
+msgstr ""
+
+#: templates/semantic-ui/invenio_app_rdm/frontpage.html:47
+msgid "Repository Statistics"
+msgstr "Statistiche Repository"
+
+#: templates/semantic-ui/invenio_app_rdm/frontpage.html:60
+msgid "Published Records"
+msgstr "Record Pubblicati"
+
+#: templates/semantic-ui/invenio_app_rdm/frontpage.html:69
+msgid "INGV Classifications"
+msgstr "Classificazioni INGV"
+
+#: templates/semantic-ui/invenio_app_rdm/frontpage.html:80
+msgid "No classifications found."
+msgstr "Nessuna classificazione presente."
+
+#: templates/semantic-ui/invenio_app_rdm/frontpage.html:93
+msgid "File Extensions"
+msgstr "Estensioni File"
+
+#: templates/semantic-ui/invenio_app_rdm/frontpage.html:100
+#, python-format
+msgid "Files in .%(ext)s format"
+msgstr "File in formato .%(ext)s"
+
+#: templates/semantic-ui/invenio_app_rdm/frontpage.html:106
+msgid "No files found."
+msgstr "Nessun file trovato."
+
+#: templates/semantic-ui/invenio_app_rdm/frontpage.html:119
+msgid "Keywords"
+msgstr "Parole Chiave"
+
+#: templates/semantic-ui/invenio_app_rdm/frontpage.html:130
+msgid "No keywords found."
+msgstr "Nessuna parola chiave presente."
+
+#: templates/semantic-ui/invenio_app_rdm/frontpage.html:145
+msgid "Community"
+msgstr "Comunità"
+
+#: templates/semantic-ui/invenio_app_rdm/frontpage.html:151
+msgid "Unique Authors"
+msgstr "Autori"
+
+#: templates/semantic-ui/invenio_app_rdm/frontpage.html:158
+msgid "Unique Contributors"
+msgstr "Contributori"
+
+#: templates/semantic-ui/invenio_app_rdm/site_footer.html:6
+#, python-format
+msgid "Operated by <a href=\"%(ingv_oe)s\">INGV - OE</a>"
+msgstr ""
+
+#: templates/semantic-ui/invenio_app_rdm/site_footer.html:7
+#, python-format
+msgid ""
+"Powered by <a\n"
+"            href=\"%(invenio_rdm)s\">InvenioRDM</a>"
+msgstr ""
+
