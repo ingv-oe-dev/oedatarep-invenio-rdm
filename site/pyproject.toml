@@ -1,3 +1,16 @@
+[project]
+name = "oedatarep-invenio-rdm"
+description = "oedatarep-invenio-rdm customizations for Invenio RDM."
+license = "MIT"
+version = "1.0.0"
+
+[project.entry-points."invenio_base.blueprints"]
+oedatarep_invenio_rdm_views = "oedatarep_invenio_rdm.views:create_blueprint"
+oedatarep_invenio_rdm_stats = "oedatarep_invenio_rdm.blueprints.stats.stats_blueprint:create_stats_blueprint"
+
+[project.entry-points."invenio_assets.webpack"]
+oedatarep_invenio_rdm_theme = "oedatarep_invenio_rdm.webpack:theme"
+
 [build-system]
-requires = ["setuptools", "wheel", "babel>2.8"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"

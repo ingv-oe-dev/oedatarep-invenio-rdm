@@ -1,0 +1,25 @@
+[project]
+name = "oedatarep-invenio-rdm-app"
+version = "1.0.0"
+authors = [{name = "INGV-OE", email = "admin.oedatarep@ct.ingv.it"}]
+license = "MIT"
+requires-python = "~=3.14.0"
+dependencies = [
+    "invenio-app-rdm[opensearch2]~=13.1.0",
+    "oedatarep-ts-loader",
+    "oedatarep-invenio-rdm",
+    "pyuwsgi>=2.0",
+    "setuptools<82",
+    "uwsgi-tools>=1.1.1",
+    "uwsgitop>=0.11",
+]
+
+[dependency-groups]
+dev = ["pytest-invenio>=4.0.0,<5.0.0"]
+
+[tool.uv.sources]
+oedatarep-invenio-rdm = {workspace = true}
+oedatarep-ts-loader = {path = "../oedatarep-ts-loader"}
+
+[tool.uv.workspace]
+members = ["site"]
