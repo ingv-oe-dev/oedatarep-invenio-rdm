@@ -66,9 +66,6 @@ services:
     depends_on:
       - web-ui
       - web-api
-    ports:
-      - "${DOCKER_WEB_IP_BIND:-0.0.0.0}:80:80"
-      - "${DOCKER_WEB_IP_BIND:-0.0.0.0}:443:443"
   # UI Application
   web-ui:
     extends:
