@@ -9,10 +9,10 @@
 #
 # Following services are included:
 # - Cache: Redis (exposed port: 6379)
-# - DB: (PostgresSQL/MySQL) (exposed port: 5432 or 3306)
+# - DB: PostgreSQL (exposed port: 5432)
 # - Message queue: RabbitMQ (exposed ports: 5672, 15672)
 # - OpenSearch (exposed ports: 9200, 9600)
-# - Kibana (view ES indexes) (exposed ports: 5601)
+# - Kibana (view OS indexes) (exposed ports: 5601)
 #
 services:
   cache:
@@ -23,14 +23,27 @@ services:
     extends:
       file: docker-services.yml
       service: db
+    volumes:
+      - db_data:/var/lib/postgresql/data
   mq:
     extends:
       file: docker-services.yml
       service: mq
+    volumes:
+      - mq_data:/var/lib/rabbitmq
+  flower:
+    extends:
+      file: docker-services.yml
+      service: flower
+    depends_on:
+      mq:
+        condition: service_started
   search:
     extends:
       file: docker-services.yml
       service: search
+    volumes:
+      - search_data:/usr/share/opensearch/data
   opensearch-dashboards:
     extends:
       file: docker-services.yml
@@ -39,3 +52,7 @@ services:
     extends:
       file: docker-services.yml
       service: pgadmin
+volumes:
+  db_data:
+  mq_data:
+  search_data:

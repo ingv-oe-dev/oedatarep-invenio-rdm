@@ -13,7 +13,7 @@
 # - UI application: UWSGI (not exposed)
 # - API application: UWSGI (not exposed)
 # - Cache: Redis (exposed port: 6379)
-# - DB: (PostgresSQL/MySQL) (exposed port: 5432 or 3306)
+# - DB: PostgreSQL (exposed port: 5432)
 # - Message queue: RabbitMQ (exposed ports: 5672, 15672)
 # - Search platform: (OpenSearch) (exposed ports: 9200, 9600)
 # - OpenSearch Dashboard/Kibana (view OS/ES indexes) (exposed ports: 5601)
@@ -28,15 +28,26 @@ services:
       file: docker-services.yml
       service: db
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - db_data:/var/lib/postgresql/data
   mq:
     extends:
       file: docker-services.yml
       service: mq
+    volumes:
+      - mq_data:/var/lib/rabbitmq
+  flower:
+    extends:
+      file: docker-services.yml
+      service: flower
+    depends_on:
+      mq:
+        condition: service_started
   search:
     extends:
       file: docker-services.yml
       service: search
+    volumes:
+      - search_data:/usr/share/opensearch/data
   opensearch-dashboards:
     extends:
       file: docker-services.yml
@@ -56,15 +67,18 @@ services:
       - web-ui
       - web-api
     ports:
-      - "${DOCKER_SERVICES_IP_BIND:-127.0.0.1}:80:80"
-      - "${DOCKER_SERVICES_IP_BIND:-127.0.0.1}:443:443"
+      - "${DOCKER_WEB_IP_BIND:-0.0.0.0}:80:80"
+      - "${DOCKER_WEB_IP_BIND:-0.0.0.0}:443:443"
   # UI Application
   web-ui:
     extends:
       file: docker-services.yml
       service: app
     command: ["uwsgi /opt/invenio/var/instance/uwsgi_ui.ini"]
-    image: oedatarep-invenio-rdm:latest
+    depends_on:
+      search:
+        condition: service_healthy
+    image: my-site:latest
     ports:
       - "${DOCKER_SERVICES_IP_BIND:-127.0.0.1}:5000:5000"
     volumes:
@@ -78,7 +92,10 @@ services:
       file: docker-services.yml
       service: app
     command: ["uwsgi /opt/invenio/var/instance/uwsgi_rest.ini"]
-    image: oedatarep-invenio-rdm:latest
+    depends_on:
+      search:
+        condition: service_healthy
+    image: my-site:latest
     ports:
       - "${DOCKER_SERVICES_IP_BIND:-127.0.0.1}:5001:5000"
     volumes:
@@ -97,27 +114,31 @@ services:
       - ./invenio.cfg:/opt/invenio/var/instance/invenio.cfg
     depends_on:
       search:
-        condition: service_started
+        condition: service_healthy
       cache:
         condition: service_started
       db:
         condition: service_started
       mq:
         condition: service_started
-
   # Jobs scheduler
   scheduler:
     extends:
       file: docker-services.yml
       service: app
-    command: ["celery -A invenio_app.celery beat --scheduler invenio_jobs.services.scheduler:RunScheduler --loglevel=INFO"]
+    command:
+      [
+        "celery -A invenio_app.celery beat --scheduler invenio_jobs.services.scheduler:RunScheduler --loglevel=INFO",
+      ]
     depends_on:
       mq:
         condition: service_started
       db:
         condition: service_started
 volumes:
+  db_data:
+  mq_data:
+  search_data:
   static_data:
   uploaded_data:
   archived_data:
-  postgres_data:
