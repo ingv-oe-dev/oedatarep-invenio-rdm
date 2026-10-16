@@ -5,7 +5,7 @@ authors = [{name = "INGV-OE", email = "admin.oedatarep@ct.ingv.it"}]
 license = "MIT"
 requires-python = "~=3.14.0"
 dependencies = [
-    "invenio-app-rdm[opensearch2]~=13.1.0",
+    "invenio-app-rdm[opensearch2]~=14.0.0",
     "oedatarep-ts-loader",
     "oedatarep-invenio-rdm",
     "pyuwsgi>=2.0",
