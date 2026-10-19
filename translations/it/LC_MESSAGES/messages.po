@@ -5,11 +5,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: info@oedatarep-invenio-rdm.com\n"
-"POT-Creation-Date: 2026-06-26 12:16+0200\n"
+"Project-Id-Version: OEDataRep\n"
+"Report-Msgid-Bugs-To: admin.oedatarep@ct.ingv.it\n"
+"POT-Creation-Date: 2026-08-19 10:42+0200\n"
 "PO-Revision-Date: 2026-06-22 16:33+0200\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Last-Translator: OEDatarep Admin <admin.oedatarep@ct.ingv.it>\n"
 "Language: it\n"
 "Language-Team: it <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
 
-#: invenio.cfg:387
+#: invenio.cfg:389
 #, fuzzy
 msgid "INGV Classification"
 msgstr "Classificazioni INGV"
@@ -35,6 +35,55 @@ msgstr ""
 msgid "Inbox"
 msgstr ""
 
+#: site/oedatarep_invenio_rdm/templates/semantic-ui/oedatarep_invenio_rdm/stats_sidebar.html:10
+msgid "Repository Statistics"
+msgstr "Statistiche Repository"
+
+#: site/oedatarep_invenio_rdm/templates/semantic-ui/oedatarep_invenio_rdm/stats_sidebar.html:23
+msgid "Published Records"
+msgstr "Record Pubblicati"
+
+#: site/oedatarep_invenio_rdm/templates/semantic-ui/oedatarep_invenio_rdm/stats_sidebar.html:32
+msgid "INGV Classifications"
+msgstr "Classificazioni INGV"
+
+#: site/oedatarep_invenio_rdm/templates/semantic-ui/oedatarep_invenio_rdm/stats_sidebar.html:43
+msgid "No classifications found."
+msgstr "Nessuna classificazione presente."
+
+#: site/oedatarep_invenio_rdm/templates/semantic-ui/oedatarep_invenio_rdm/stats_sidebar.html:56
+msgid "File Extensions"
+msgstr "Estensioni File"
+
+#: site/oedatarep_invenio_rdm/templates/semantic-ui/oedatarep_invenio_rdm/stats_sidebar.html:63
+#, python-format
+msgid "Files in .%(ext)s format"
+msgstr "File in formato .%(ext)s"
+
+#: site/oedatarep_invenio_rdm/templates/semantic-ui/oedatarep_invenio_rdm/stats_sidebar.html:69
+msgid "No files found."
+msgstr "Nessun file trovato."
+
+#: site/oedatarep_invenio_rdm/templates/semantic-ui/oedatarep_invenio_rdm/stats_sidebar.html:82
+msgid "Keywords"
+msgstr "Parole Chiave"
+
+#: site/oedatarep_invenio_rdm/templates/semantic-ui/oedatarep_invenio_rdm/stats_sidebar.html:93
+msgid "No keywords found."
+msgstr "Nessuna parola chiave presente."
+
+#: site/oedatarep_invenio_rdm/templates/semantic-ui/oedatarep_invenio_rdm/stats_sidebar.html:108
+msgid "Community"
+msgstr "Comunità"
+
+#: site/oedatarep_invenio_rdm/templates/semantic-ui/oedatarep_invenio_rdm/stats_sidebar.html:114
+msgid "Unique Authors"
+msgstr "Autori"
+
+#: site/oedatarep_invenio_rdm/templates/semantic-ui/oedatarep_invenio_rdm/stats_sidebar.html:121
+msgid "Unique Contributors"
+msgstr "Contributori"
+
 #: site/oedatarep_invenio_rdm/templates/semantic-ui/oedatarep_invenio_rdm/records/detail.html:8
 #: site/oedatarep_invenio_rdm/templates/semantic-ui/oedatarep_invenio_rdm/records/details/chart.html:12
 msgid "Record chart"
@@ -47,56 +96,7 @@ msgstr "Mappe"
 #: site/oedatarep_invenio_rdm/templates/semantic-ui/oedatarep_invenio_rdm/records/details/side_bar/timeseries_resources.html:14
 #: site/oedatarep_invenio_rdm/templates/semantic-ui/oedatarep_invenio_rdm/records/details/side_bar/timeseries_resources.html:15
 msgid "Timeseries resources"
-msgstr ""
-
-#: templates/semantic-ui/invenio_app_rdm/frontpage.html:47
-msgid "Repository Statistics"
-msgstr "Statistiche Repository"
-
-#: templates/semantic-ui/invenio_app_rdm/frontpage.html:60
-msgid "Published Records"
-msgstr "Record Pubblicati"
-
-#: templates/semantic-ui/invenio_app_rdm/frontpage.html:69
-msgid "INGV Classifications"
-msgstr "Classificazioni INGV"
-
-#: templates/semantic-ui/invenio_app_rdm/frontpage.html:80
-msgid "No classifications found."
-msgstr "Nessuna classificazione presente."
-
-#: templates/semantic-ui/invenio_app_rdm/frontpage.html:93
-msgid "File Extensions"
-msgstr "Estensioni File"
-
-#: templates/semantic-ui/invenio_app_rdm/frontpage.html:100
-#, python-format
-msgid "Files in .%(ext)s format"
-msgstr "File in formato .%(ext)s"
-
-#: templates/semantic-ui/invenio_app_rdm/frontpage.html:106
-msgid "No files found."
-msgstr "Nessun file trovato."
-
-#: templates/semantic-ui/invenio_app_rdm/frontpage.html:119
-msgid "Keywords"
-msgstr "Parole Chiave"
-
-#: templates/semantic-ui/invenio_app_rdm/frontpage.html:130
-msgid "No keywords found."
-msgstr "Nessuna parola chiave presente."
-
-#: templates/semantic-ui/invenio_app_rdm/frontpage.html:145
-msgid "Community"
-msgstr "Comunità"
-
-#: templates/semantic-ui/invenio_app_rdm/frontpage.html:151
-msgid "Unique Authors"
-msgstr "Autori"
-
-#: templates/semantic-ui/invenio_app_rdm/frontpage.html:158
-msgid "Unique Contributors"
-msgstr "Contributori"
+msgstr "Risorse di tipo Timeseries"
 
 #: templates/semantic-ui/invenio_app_rdm/site_footer.html:6
 #, python-format
