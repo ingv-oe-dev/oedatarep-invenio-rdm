@@ -26,6 +26,8 @@ COPY ./translations/ ${INVENIO_INSTANCE_PATH}/translations/
 COPY ./assets/ ./assets/
 COPY ./static/ ./static/
 
+RUN uv run pybabel compile -d ${INVENIO_INSTANCE_PATH}/translations/
+
 RUN cp -r ./static/. ${INVENIO_INSTANCE_PATH}/static/ && \
     cp -r ./assets/. ${INVENIO_INSTANCE_PATH}/assets/ && \
     invenio collect --verbose && \
