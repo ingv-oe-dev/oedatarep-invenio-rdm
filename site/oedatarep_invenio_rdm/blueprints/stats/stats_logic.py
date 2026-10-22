@@ -21,6 +21,12 @@ def get_classifications_map():
         return _CACHED_CLASSIFICATIONS_MAP
 
     # Read the clean and absolute path directly from Flask configuration
+
+    # (Secure access): Look for OEDATAREP_VOCABULARIES_PATH. If it's not found 
+    # (commented out or deleted in invenio.cfg), it doesn't fail (raising a fatal KeyError), 
+    # but returns the given fallback value (True). Because OEDATAREP_VOCABULARIES_PATH 
+    # lives only in invenio.cfg and hasn't been protected by defaults in config.py, 
+    # using .get() is mandatory in this specific case.
     vocabularies_path = current_app.config.get("OEDATAREP_VOCABULARIES_PATH")
 
     if not vocabularies_path:
@@ -54,14 +60,14 @@ def get_classifications_map():
 def get_repository_stats():
     """Queries OpenSearch dynamically based on invenio.cfg."""
 
-    if not current_app.config.get("OEDATAREP_STATS_SHOW_SIDEBAR", True):
+    if not current_app.config["OEDATAREP_STATS_SHOW_SIDEBAR"]:
         return {}
-    
-    show_files = current_app.config.get("OEDATAREP_STATS_SHOW_FILES", True)
-    show_subjects = current_app.config.get("OEDATAREP_STATS_SHOW_SUBJECTS", True)
-    show_classifications = current_app.config.get(
-        "OEDATAREP_STATS_SHOW_CLASSIFICATIONS", True
-    )
+
+    base_filter = current_app.config["OEDATAREP_STATS_BASE_FILTER"]
+
+    show_files = current_app.config["OEDATAREP_STATS_SHOW_FILES"]
+    show_subjects = current_app.config["OEDATAREP_STATS_SHOW_SUBJECTS"]
+    show_classifications = current_app.config["OEDATAREP_STATS_SHOW_CLASSIFICATIONS"]
 
     current_lang = str(get_locale().language) if get_locale() else "en"
     if current_lang not in ["it", "en"]:
@@ -92,11 +98,7 @@ def get_repository_stats():
         "size": 0,
         "query": {
             "bool": {
-                "must": [
-                    {"term": {"is_published": True}},
-                    {"term": {"versions.is_latest": True}},
-                    {"term": {"is_deleted": False}},
-                ]
+                "must": base_filter
             }
         },
         "aggs": aggs,
@@ -153,7 +155,7 @@ def get_repository_stats():
                 )
 
     except Exception as e:
-        log.warning(f"Error statistichs OpenSearch: {e}")
+        log.warning(f"Error statistics OpenSearch: {e}")
 
     return stats
 
@@ -161,20 +163,18 @@ def get_repository_stats():
 def get_people_stats():
     """Retrieves total count and top list of creators and contributors."""
 
-    if not current_app.config.get("OEDATAREP_STATS_SHOW_AUTHORS", True):
+    if not current_app.config["OEDATAREP_STATS_SHOW_AUTHORS"]:
         return {}
     
     index_name = "rdmrecords-records"
+
+    base_filter = current_app.config["OEDATAREP_STATS_BASE_FILTER"]
 
     query = {
         "size": 0,
         "query": {
             "bool": {
-                "must": [
-                    {"term": {"is_published": True}},
-                    {"term": {"versions.is_latest": True}},
-                    {"term": {"is_deleted": False}},
-                ]
+                "must": base_filter
             }
         },
         "aggs": {
