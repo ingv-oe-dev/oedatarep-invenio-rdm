@@ -1,6 +1,8 @@
 [cli]
 flavour = RDM
 logfile = /logs/invenio-cli.log
+python_package_manager = uv
+javascript_package_manager = pnpm
 
 [cookiecutter]
 project_name = OEDatarep-Invenio-RDM
@@ -10,7 +12,7 @@ project_site = oedatarep-invenio-rdm.com
 github_repo = ingv-oe-dev/oedatarep-invenio-rdm
 description = OEDatarep-Invenio-RDM InvenioRDM Instance
 author_name = INGV-OE
-author_email = info@oedatarep-invenio-rdm.com
+author_email = admin.oedatarep@ct.ingv.it
 year = 2022
 database = postgresql
 search = opensearch2

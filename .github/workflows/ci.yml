@@ -25,28 +25,31 @@ jobs:
       - name: Check out source
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.9"
-          cache: pip
-          cache-dependency-path: Pipfile.lock
-
-      - name: Install validation tools
+      - name: Check out oedatarep-ts-loader
         run: |
-          python -m pip install --upgrade pip
-          python -m pip install pipenv PyYAML
+          git clone --depth 1 \
+            --branch "${{ vars.OEDATAREP_RELEASE }}" \
+            https://github.com/ingv-oe-dev/oedatarep-ts-loader.git \
+            ../oedatarep-ts-loader
 
-      - name: Verify Pipfile.lock
-        run: pipenv verify
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v10.4.0
+        with:
+          enable-cache: true
+
+      - name: Set up Python
+        run: uv python install
+
+      - name: Verify uv.lock
+        run: uv lock --check
 
       - name: Check Python syntax
-        run: python -m compileall -q site
+        run: uv run python -m compileall -q site
 
       - name: Validate YAML syntax
         shell: bash
         run: |
-          python - <<'PY'
+          uv run --with PyYAML python - <<'PY'
           from pathlib import Path
 
           import yaml
